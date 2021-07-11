@@ -5,14 +5,15 @@ import "../../css/NewExpense/NewExpenseForm.css";
 const NewExpenseForm = (props) => {
   const [newExpense, setNewExpense] = useState({
     title: "",
-    amount: "",
+    amount: 0,
     date: "",
   });
 
   const expenseChangeHandler = (e) => {
     let { name, value } = e.target;
+
     setNewExpense((prevValues) => {
-      return { ...prevValues, [name]: value };
+      return { ...prevValues, [name]: name === "amount" ? +value : value };
     });
   };
 
@@ -22,7 +23,7 @@ const NewExpenseForm = (props) => {
 
     setNewExpense({
       title: "",
-      amount: "",
+      amount: 0,
       date: "",
     });
   };
